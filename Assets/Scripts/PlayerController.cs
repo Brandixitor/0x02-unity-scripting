@@ -6,13 +6,6 @@ public class PlayerController : MonoBehaviour
 {   
     public float speed;
 
-    void move()
-    {   
-        // GetAxis Inputs.
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-        transform.Translate (x, 0, z);
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +16,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // GetAxis Inputs.
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
-        move(); //Keeps the movement script running inside the frame update.
+        transform.Translate (x, 0, z);
 
     }
 }
