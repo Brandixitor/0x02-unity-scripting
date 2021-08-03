@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {   
-    public float speed;
+    public Rigidbody rb;
+    public float speed = 1500f;
 
 
     // Start is called before the first frame update
@@ -17,10 +18,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // GetAxis Inputs.
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-        transform.Translate (x, 0, z);
+        Vector3 dir = new Vector3(x, 0, z).normalized;
+        Vector3 force = dir * speed * Time.deltaTime; 
+        rb.AddForce(force);
 
     }
 }
