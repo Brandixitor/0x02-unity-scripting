@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other) // Function to add +1 to the score and destroy the coin upon touching it.
     {
         if (other.tag == "Pickup")
         {
