@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {   
     public Rigidbody rb;
     public float speed = 1000f;
+    private int score;
 
 
     // Start is called before the first frame update
@@ -26,4 +27,15 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(force);
 
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Pickup")
+        {
+            score++;
+            Debug.Log($"Score: {score}");
+            Destroy(other.gameObject);
+        }
+    }
+
 }
