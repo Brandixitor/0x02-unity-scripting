@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        // Function to add +1 to the score and destroy the coin upon touching it.
+        // Condition to add +1 to the score and destroy the coin upon touching it.
         if (other.tag == "Pickup")
         {
             score++;
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        // Function to manage the health of the player.
+        // Condition to manage the health of the player.
         if (other.tag == "Trap")
         {
             health--;
