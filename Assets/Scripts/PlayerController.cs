@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {   
-    public Rigidbody rb; //Rigidbody varaible.
-    public float speed = 1000f; //player speed.
-    private int score; //score of the player
-    public int health = 5; //health of the player.
+    public Rigidbody rb; // Rigidbody variable.
+    public float speed = 1000f; // Player speed.
+    private int score; // Score of the player
+    public int health = 5; // Health of the player.
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -45,7 +39,13 @@ public class PlayerController : MonoBehaviour
             health--;
             Debug.Log($"Health: {health}");
         }
+
+
+        // Condition to let the player know that they've won upon touching the finish line.
+        if (other.tag == "Goal")
+        {
+            Debug.Log("You win!");
+        }
+
     }
-
-
 }
