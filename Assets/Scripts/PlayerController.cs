@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {   
-    public Rigidbody rb;
-    public float speed = 1000f;
-    private int score;
+    public Rigidbody rb; //Rigidbody varaible.
+    public float speed = 1000f; //player speed.
+    private int score; //score of the player
+    public int health = 5; //health of the player.
 
 
     // Start is called before the first frame update
@@ -28,14 +29,23 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other) // Function to add +1 to the score and destroy the coin upon touching it.
+    void OnTriggerEnter(Collider other) 
     {
+        // Function to add +1 to the score and destroy the coin upon touching it.
         if (other.tag == "Pickup")
         {
             score++;
             Debug.Log($"Score: {score}");
             Destroy(other.gameObject);
         }
+
+        // Function to manage the health of the player.
+        if (other.tag == "Trap")
+        {
+            health--;
+            Debug.Log($"Health: {health}");
+        }
     }
+
 
 }
