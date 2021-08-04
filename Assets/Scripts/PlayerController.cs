@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {   
@@ -20,6 +21,19 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = new Vector3(x, 0, z).normalized;
         Vector3 force = dir * speed * Time.deltaTime; 
         rb.AddForce(force);
+
+
+
+        // Condition to reset the score upon health reaches 0.
+        if (health == 0)
+        {
+            Debug.Log("Game Over!");
+            health = 5;
+            score = 0;
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+            
+        }
 
     }
 
